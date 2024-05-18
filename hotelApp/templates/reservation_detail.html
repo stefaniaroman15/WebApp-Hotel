@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation Detail</title>
+</head>
+<body>
+    <h1>Reservation Detail for {{ reservation.user_name }}</h1>
+    <p>Room: {{ reservation.room.room_number }} in {{ reservation.room.hotel.name }}</p>
+    <p>Check-in: {{ reservation.check_in }}</p>
+    <p>Check-out: {{ reservation.check_out }}</p>
+    <p>Status: {{ reservation.is_active }}</p>
+    <a href="{% url 'leave_feedback' reservation.id %}">Leave Feedback</a>
+    <a href="{% url 'hotel_list' %}">Back to Hotel List</a>
+</body>
+</html>

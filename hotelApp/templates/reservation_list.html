@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation List</title>
+</head>
+<body>
+    <h1>Reservation List</h1>
+    <ul>
+        {% for reservation in reservations %}
+            <li>
+                <p>User Name: {{ reservation.user_name }}</p>
+                <p>Room: {{ reservation.room }}</p>
+                <p>Check-in: {{ reservation.check_in }}</p>
+                <p>Check-out: {{ reservation.check_out }}</p>
+                <!-- Adaugă aici alte informații despre rezervare, cum ar fi hotelul sau alte detalii -->
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- room_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Detail</title>
+</head>
+<body>
+    <h1>Room Detail</h1>
+    <p>Hotel Name: {{ hotel.name }}</p>
+    <p>Room Number: {{ room.roomNumber }}</p>
+    <p>Price: {{ room.price }}</p>
+    <p>Available: {% if room.isAvailable %}Yes{% else %}No{% endif %}</p>
+
+    <form method="post" action="/hotelapp/reserve_room/">
+        {% csrf_token %}
+        <input type="hidden" name="hotel_id" value="{{ hotel.id }}">
+        <input type="hidden" name="room_number" value="{{ room.roomNumber }}">
+        <button type="submit">Reserve Room</button>
+    </form>
+</body>
+</html>

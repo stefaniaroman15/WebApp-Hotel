@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel List</title>
+</head>
+<body>
+    <h1>Hotel List</h1>
+    <ul>
+        {% for hotel in hotels %}
+            <li>
+                <h2>{{ hotel.name }}</h2>
+                <p>Latitude: {{ hotel.latitude }}</p>
+                <p>Longitude: {{ hotel.longitude }}</p>
+                <h3>Rooms:</h3>
+                <ul>
+                    {% for room in hotel.rooms %}
+                        <li>
+                            <p>Room Number: {{ room.roomNumber }}</p>
+                            <p>Price: {{ room.price }}</p>
+                            <p>Available: {% if room.isAvailable %} Yes {% else %} No {% endif %}</p>
+                            <form action="{% url 'reserve_room' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="hotel_id" value="{{ hotel.id }}">
+                                <input type="hidden" name="room_number" value="{{ room.roomNumber }}">
+                                <button type="submit">Reserve Room</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
